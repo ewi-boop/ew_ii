@@ -1,203 +1,118 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta name="google-site-verification" content="_1wpIuLaqOZlJk8jmc8jDWa3rc8gVsXWk5_qC3BFIYs" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
-<style>
-    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif;}
-    body { background-color: #0a0a0a; color: #f5f5f5; }
-    nav { display: flex; justify-content: space-between; align-items:center; padding: 20px 30px; background: rgba(20, 20, 20, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
-    nav h1 { font-size: 1.5rem; }
-    nav .menu { display: flex; flex-wrap: wrap; gap: 15px; }
-    nav a { color: #f5f5f5; text-decoration: none; font-weight: 600; position: relative; transition: color 0.3s; font-size: 1rem; }
-    nav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #ef4444; transition: width 0.3s; }
-    nav a:hover { color: #ef4444; }
-    nav a:hover::after { width: 100%; }
-    
-    header { display: flex; align-items: center; justify-content: space-around; padding: 80px 30px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); scroll-margin-top: 80px; flex-wrap: wrap; gap: 40px; }
-    header .intro { max-width: 600px; text-align: center; }
-    header .intro h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.3; }
-    header .intro h1 span { color: #ef4444; }
-    header .intro button { padding: 12px 30px; background: #ef4444; color: #fff; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s, transform 0.2s; }
-    header .intro button:hover { background: #dc2626; transform: scale(1.05); }
-    header .logo-circle { width: 220px; height: 220px; border-radius: 50%; overflow: hidden; border: 5px solid #ef4444; box-shadow: 0 0 30px rgba(239,68,68,0.6); display: flex; align-items: center; justify-content: center; }
-    header .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio programátora ew_i – moderní weby, webdesign, týmová komunikace a správa herních serverů.">
+    <meta name="google-site-verification" content="_1wpIuLaqOZlJk8jmc8jDWa3rc8gVsXWk5_qC3BFIYs" />
+    <title>Portfolio - ew_i</title>
 
-    main { max-width: 1200px; margin: auto; }
-    section { padding: 60px 30px; scroll-margin-top: 80px; }
-    section h2 { font-size: 2.4rem; font-weight: bold; margin-bottom: 30px; color: #ef4444; text-align: center; }
+    <!-- Favicon a ikony -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    #about p { font-size: 1.1rem; font-weight: 500; line-height: 1.8; text-align: center; }
+    <!-- Open Graph (pro Google, Facebook, Discord atd.) -->
+    <meta property="og:title" content="Portfolio - ew_i">
+    <meta property="og:description" content="Moderní weby, webdesign, týmová komunikace a správa herních serverů.">
+    <meta property="og:image" content="https://tvujweb.cz/images/logo.png">
+    <meta property="og:url" content="https://tvujweb.cz">
+    <meta property="og:type" content="website">
 
-    #skills div { display:flex;flex-wrap:wrap;gap:30px; justify-content:center; }
-    #skills div > div { background: rgba(239,68,68,0.05); padding:25px; border-radius:20px; width:100%; max-width:500px; box-shadow: 0 4px 20px rgba(239,68,68,0.2); transition: transform 0.3s, box-shadow 0.3s; font-size: 1.2rem; font-weight: 700; }
-    #skills div > div:hover { transform: translateY(-5px); box-shadow: 0 6px 25px rgba(239,68,68,0.4); }
-    #skills h3 { color: #ef4444; margin-bottom: 20px; text-align: center; font-size: 1.6rem; font-weight: bold; }
-    #skills ul { list-style-type: disc; padding-left: 20px; color: #f5f5f5; line-height: 1.6; font-weight: 600; font-size: 1rem; }
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio - ew_i">
+    <meta name="twitter:description" content="Moderní weby, webdesign, týmová komunikace a správa herních serverů.">
+    <meta name="twitter:image" content="https://tvujweb.cz/images/logo.png">
 
-    #pricing ul { list-style-type: none; padding-left: 0; line-height: 1.8; font-size: 1.1rem; font-weight: 600; text-align: center; }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+        }
 
-    form { display: flex; flex-direction: column; gap: 15px; background: rgba(239,68,68,0.05); padding: 25px; border-radius: 15px; box-shadow: 0 4px 20px rgba(239,68,68,0.2); max-width: 100%; width: 100%; margin: auto; }
-    form label { display: flex; flex-direction: column; font-weight: bold; color: #f5f5f5; font-size: 0.9rem; }
-    form input, form textarea { padding: 10px; border-radius: 8px; border: 1px solid #ef4444; margin-top: 5px; font-size: 1rem; background: rgba(255,255,255,0.05); color: #f5f5f5; }
-    form input::placeholder, form textarea::placeholder { color: rgba(245,245,245,0.6); }
-    form button { padding: 12px 25px; background-color: #ef4444; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.3s, transform 0.2s; }
-    form button:hover { background-color: #dc2626; transform: scale(1.05); }
+        header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #0044cc;
+        }
 
-    footer { text-align: center; padding: 40px 20px; background: rgba(20, 20, 20, 0.9); color: #ef4444; font-size: 0.9rem; }
+        header h1 {
+            color: #00aaff;
+            margin: 0;
+        }
 
-    /* 📱 RESPONSIVE */
-    @media (max-width: 768px) {
-        nav { padding: 15px 20px; flex-direction: column; align-items: flex-start; gap: 10px; }
-        nav .menu { justify-content: flex-start; flex-wrap: wrap; gap: 10px; }
-        header { flex-direction: column; padding: 60px 20px; }
-        header .intro h1 { font-size: 1.8rem; }
-        header .logo-circle { width: 180px; height: 180px; }
-        section { padding: 40px 20px; }
-        section h2 { font-size: 2rem; }
-    }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 0;
+            background-color: #111111;
+        }
 
-    @media (max-width: 480px) {
-        nav h1 { font-size: 1.2rem; }
-        nav .menu a { font-size: 0.9rem; margin-left: 0; }
-        header .intro h1 { font-size: 1.5rem; }
-        #about p { font-size: 1rem; }
-        #skills div > div { font-size: 1rem; padding:20px; }
-        form { padding: 20px; }
-    }
-</style>
+        nav a {
+            color: #00aaff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #00aaff;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            color: #888888;
+            text-align: center;
+            padding: 15px;
+            border-top: 2px solid #0044cc;
+        }
+    </style>
 </head>
 <body>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
-<style>
-    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif;}
-    body { background-color: #0a0a0a; color: #f5f5f5; }
-    nav { display: flex; justify-content: space-between; padding: 20px 50px; background: rgba(20, 20, 20, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; }
-    nav .logo img { max-height: 50px; }
-    nav a { color: #f5f5f5; text-decoration: none; margin-left: 20px; font-weight: 600; position: relative; transition: color 0.3s; }
-    nav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #ef4444; transition: width 0.3s; }
-    nav a:hover { color: #ef4444; }
-    nav a:hover::after { width: 100%; }
-    header { display: flex; align-items: center; justify-content: space-around; padding: 120px 50px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); scroll-margin-top: 80px; }
-    header .intro { max-width: 600px; text-align: center; }
-    header .intro h1 { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.3; }
-    header .intro h1 span { color: #ef4444; }
-    header .intro button { padding: 12px 30px; background: #ef4444; color: #fff; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s, transform 0.2s; }
-    header .intro button:hover { background: #dc2626; transform: scale(1.05); }
-    header .logo-circle { width: 280px; height: 280px; border-radius: 50%; overflow: hidden; border: 5px solid #ef4444; box-shadow: 0 0 30px rgba(239,68,68,0.6); display: flex; align-items: center; justify-content: center; }
-    header .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
-    main { max-width: 1400px; margin: auto; }
-    section { padding: 80px 50px; scroll-margin-top: 80px; }
-    section h2 { font-size: 3rem; font-weight: bold; margin-bottom: 40px; color: #ef4444; text-align: center; }
-    #about p { font-size: 1.4rem; font-weight: 500; line-height: 2; }
-    #skills div { display:flex;flex-wrap:wrap;gap:40px; justify-content:center; }
-    #skills div > div { background: rgba(239,68,68,0.05); padding:35px; border-radius:20px; width:650px; box-shadow: 0 4px 20px rgba(239,68,68,0.2); transition: transform 0.3s, box-shadow 0.3s; font-size: 1.6rem; font-weight: 700; }
-    #skills div > div:hover { transform: translateY(-5px); box-shadow: 0 6px 25px rgba(239,68,68,0.4); }
-    #skills h3 { color: #ef4444; margin-bottom: 20px; text-align: center; font-size: 2.2rem; font-weight: bold; }
-    #skills ul { list-style-type: disc; padding-left: 25px; color: #f5f5f5; line-height: 2; font-weight: 600; font-size: 1.3rem; }
-    #pricing ul { list-style-type: none; padding-left: 0; line-height: 2; font-size: 1.4rem; font-weight: 600; text-align: center; }
-    form { display: flex; flex-direction: column; gap: 15px; background: rgba(239,68,68,0.05); padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(239,68,68,0.2); max-width: 600px; margin: auto; }
-    form label { display: flex; flex-direction: column; font-weight: bold; color: #f5f5f5; }
-    form input, form textarea { padding: 12px; border-radius: 8px; border: 1px solid #ef4444; margin-top: 5px; font-size: 1rem; background: rgba(255,255,255,0.05); color: #f5f5f5; }
-    form input::placeholder, form textarea::placeholder { color: rgba(245,245,245,0.6); }
-    form button { padding: 12px 25px; background-color: #ef4444; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.3s, transform 0.2s; }
-    form button:hover { background-color: #dc2626; transform: scale(1.05); }
-    footer { text-align: center; padding: 50px; background: rgba(20, 20, 20, 0.9); color: #ef4444; }
-</style>
-</head>
-<body>
+    <header>
+        <h1>ew_i Portfolio</h1>
+    </header>
 
-<nav>
-    <h1>ew_i</h1>
-    <div class="menu">
-        <a href="#intro">Úvod</a>
+    <nav>
         <a href="#about">O mně</a>
-        <a href="#skills">Moje dovednosti</a>
-        <a href="#pricing">Ceník</a>
+        <a href="#projects">Projekty</a>
         <a href="#contact">Kontakt</a>
-    </div>
-</nav>
+    </nav>
 
-<header id="intro">
-    <div class="intro">
-        <h1>Ahoj, jsem <span>ew_i</span><br>Web programátor & Manažer týmové komunikace</h1>
-        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Kontaktujte mě</button>
-    </div>
-    <div class="logo-circle">
-        <img src="tets/logo.PNG" alt="logo">
-    </div>
-</header>
+    <main>
+        <section id="about">
+            <h2>O mně</h2>
+            <p>Jsem programátor a webdesigner se zájmem o moderní webové technologie, týmovou spolupráci a správu herních serverů.</p>
+        </section>
 
-<main>
-    <section id="about">
-        <h2>O mně</h2>
-        <p>Jsem ew_i, web programátor a tvůrce moderních a funkčních webových řešení. Kromě své profesní práce se aktivně věnuji herním serverům, kde působím jako manažer týmové komunikace a staff koordinátor – zajišťuji hladnou spolupráci a efektivní komunikaci mezi helpery a celým týmem. Kombinuji technické dovednosti s organizačními schopnostmi, abych vytvářel nejen krásné weby, ale i dobře fungující herní prostředí.</p>
-    </section>
+        <section id="projects">
+            <h2>Projekty</h2>
+            <p>Zde jsou ukázky mých projektů, od webových stránek až po herní servery a skripty.</p>
+        </section>
 
-    <section id="skills">
-        <h2>Moje dovednosti</h2>
-        <div>
-            <div>
-                <h3>Web design & programování</h3>
-                <ul>
-                    <li>Moderní webové stránky s HTML a CSS</li>
-                    <li>Responzivní design pro mobil a desktop</li>
-                    <li>Moderní a stylový design webu dle představ zákazníka</li>
-                </ul>
-            </div>
-            <div>
-                <h3>Herní servery & týmová práce</h3>
-                <ul>
-                    <li>Manažer týmové komunikace a koordinátor staffu</li>
-                    <li>Organizace práce helperů a týmu</li>
-                    <li>Efektivní komunikace a řešení konfliktů</li>
-                    <li>Správa herních portálů a serverů</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <p>Pro spolupráci mě můžete kontaktovat na emailu: <a href="mailto:example@ewi.cz">example@ewi.cz</a></p>
+        </section>
+    </main>
 
-    <section id="pricing">
-        <h2>Ceník služeb</h2>
-        <ul>
-            <li><strong>Tvorba webů</strong></li>
-            <li>Portfolio web – 250 Kč</li>
-            <li>Web standartní velikosti – 450 Kč</li>
-            <li>Web střední velikosti – 650 Kč</li>
-            <li>Web velké velikosti – od 750 Kč</li>
-            <li>Custom web – cena dle domluvy</li>
-<li>Vše dle dohody ceník slouží pouze pro orientační ceny</li>
-            <br>
-            <li><strong>Konzultace & týmová komunikace</strong></li>
-            <li>Pomoc s komunikací a vedením týmu – 200–300 Kč (dle rozsahu)</li>
-            <li>Větší projekty a dlouhodobá spolupráce – cena dle domluvy</li>
-<li>Vše dle dohody ceník slouží pouze pro orientační ceny</li>
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>Kontakt</h2>
-        <form action="https://formspree.io/f/xqalnorl" method="POST">
-            <label>
-                Váš email:
-                <input type="email" name="email" required placeholder="example@email.com">
-            </label>
-            <label>
-                Vaše zpráva:
-                <textarea name="message" rows="5" required placeholder="Vaše zpráva..."></textarea>
-            </label>
-            <button type="submit">Odeslat</button>
-        </form>
-    </section>
-</main>
-
-<footer>
-    &copy; 2025 ew_i
-</footer>
-
+    <footer>
+        &copy; 2025 ew_i
+    </footer>
 </body>
 </html>

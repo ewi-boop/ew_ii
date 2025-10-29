@@ -1,165 +1,324 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio programátora ew_i – moderní weby, webdesign, týmová komunikace a správa herních serverů.">
-    <meta name="google-site-verification" content="_1wpIuLaqOZlJk8jmc8jDWa3rc8gVsXWk5_qC3BFIYs" />
-    <title>Portfolio - ew_i</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/kMfsgTQg/Kopie-navrhu-Navrh-bez-nazvu-removebg-preview.png">
-    <style>
-        * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif;}
-        body { background-color: #0a0a0a; color: #f5f5f5; }
-        nav { display: flex; justify-content: space-between; align-items:center; padding: 20px 30px; background: rgba(20, 20, 20, 0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; }
-        nav h1 { font-size: 1.5rem; }
-        nav .menu { display: flex; flex-wrap: wrap; gap: 15px; }
-        nav a { color: #f5f5f5; text-decoration: none; font-weight: 600; position: relative; transition: color 0.3s; font-size: 1rem; }
-        nav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: #ef4444; transition: width 0.3s; }
-        nav a:hover { color: #ef4444; }
-        nav a:hover::after { width: 100%; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ew_i — Portfolio & Grafický design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0A0B0E;          
+      --bg-2:#0E1015;
+      --card:rgba(255,255,255,0.06);
+      --muted:#B7C0D3;
+      --text:#F5F7FF;
+      --primary:#06B6D4;     
+      --primary-2:#7C3AED;   
+      --accent:#22D3EE;      
+      --danger:#ef4444;
+      --ring:rgba(34,211,238,0.25);
+      --radius:16px;
+      --shadow:0 12px 40px rgba(0,0,0,0.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;overflow-x:hidden;background:
+      radial-gradient(120vw 120vh at -10% -10%, rgba(124,58,237,0.18), transparent 60%),
+      radial-gradient(120vw 120vh at 110% 10%, rgba(6,182,212,0.16), transparent 60%),
+      linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%);
+      background-attachment: fixed; color:var(--text)}
+    a{color:inherit;text-decoration:none}
 
-        header { display: flex; align-items: center; justify-content: space-around; padding: 80px 30px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); scroll-margin-top: 80px; flex-wrap: wrap; gap: 40px; }
-        header .intro { max-width: 600px; text-align: center; }
-        header .intro h1 { font-size: 2.2rem; margin-bottom: 20px; line-height: 1.3; }
-        header .intro h1 span { color: #ef4444; }
-        header .intro button { padding: 12px 30px; background: #ef4444; color: #fff; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s, transform 0.2s; }
-        header .intro button:hover { background: #dc2626; transform: scale(1.05); }
-        header .logo-circle { width: 220px; height: 220px; border-radius: 50%; overflow: hidden; border: 5px solid #ef4444; box-shadow: 0 0 30px rgba(239,68,68,0.6); display: flex; align-items: center; justify-content: center; }
-        header .logo-circle img { width: 100%; height: 100%; object-fit: cover; }
+    .wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+    header{position:sticky;top:0;z-index:40;background:rgba(10,11,14,0.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,0.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .logo{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 30deg, var(--primary), var(--primary-2));box-shadow:0 6px 18px rgba(124,58,237,0.35)}
+  .name{font-size:20px;letter-spacing:0.4px}
+    .name .a{color:#fff}
+    .name .b{background:linear-gradient(90deg,var(--primary),var(--primary-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .navlinks{display:flex;gap:16px;align-items:center}
+    .navlinks a{color:var(--muted);font-weight:600;padding:10px 12px;border-radius:12px}
+    .navlinks a:hover,.navlinks a.active{color:#fff;background:rgba(124,58,237,0.14)}
+    .cta{background:linear-gradient(90deg,var(--primary),var(--primary-2));border:none;color:#fff;padding:10px 16px;border-radius:12px;font-weight:800;box-shadow:0 10px 30px rgba(124,58,237,0.28);cursor:pointer}
+    .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.28);color:#D9FAFF;padding:6px 10px;border-radius:999px;font-size:12px}
 
-        main { max-width: 1200px; margin: auto; }
-        section { padding: 60px 30px; scroll-margin-top: 80px; }
-        section h2 { font-size: 2.4rem; font-weight: bold; margin-bottom: 30px; color: #ef4444; text-align: center; }
+    main{display:block}
+    .hero{position:relative}
+    .hero .overlay{position:relative;padding:110px 0 72px}
+    .hero h1{font-size:58px;margin:0;background:linear-gradient(90deg,var(--primary),var(--primary-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);font-size:18px;margin:14px 0 0;max-width:820px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card:hover{border-color:rgba(124,58,237,0.35)}
+    h2{margin:0 0 12px 0}
+    .muted{color:var(--muted)}
+    .stack{display:flex;flex-direction:column;gap:12px}
+    .row{display:flex;gap:10px;align-items:center}
+    .btn{border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:#fff;border-radius:12px;padding:10px 14px;cursor:pointer}
+    .btn:hover{background:rgba(255,255,255,0.08)}
+    .danger{background:linear-gradient(90deg,#ef4444,#b91c1c);border:none;color:#fff}
+    .section{padding:60px 0;scroll-margin-top:80px}
 
-        #about p { font-size: 1.1rem; font-weight: 500; line-height: 1.8; text-align: center; }
+    .section h2{font-size:34px}
+    .section .lead{color:var(--muted)}
 
-        #skills div { display:flex;flex-wrap:wrap;gap:30px; justify-content:center; }
-        #skills div > div { background: rgba(239,68,68,0.05); padding:25px; border-radius:20px; width:100%; max-width:500px; box-shadow: 0 4px 20px rgba(239,68,68,0.2); transition: transform 0.3s, box-shadow 0.3s; font-size: 1.2rem; font-weight: 700; }
-        #skills div > div:hover { transform: translateY(-5px); box-shadow: 0 6px 25px rgba(239,68,68,0.4); }
-        #skills h3 { color: #ef4444; margin-bottom: 20px; text-align: center; font-size: 1.6rem; font-weight: bold; }
-        #skills ul { list-style-type: disc; padding-left: 20px; color: #f5f5f5; line-height: 1.6; font-weight: 600; font-size: 1rem; }
+    .feature{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+    .feature .panel{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
 
-        #pricing ul { list-style-type: none; padding-left: 0; line-height: 1.8; font-size: 1.1rem; font-weight: 600; text-align: center; }
+    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .shot{position:relative;overflow:hidden;border-radius:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06)}
+    .shot img{width:100%;height:220px;object-fit:cover;display:block;filter:saturate(1.05)}
+    .shot .caption{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);color:#fff;font-weight:600}
 
-        form { display: flex; flex-direction: column; gap: 15px; background: rgba(239,68,68,0.05); padding: 25px; border-radius: 15px; box-shadow: 0 4px 20px rgba(239,68,68,0.2); max-width: 100%; width: 100%; margin: auto; }
-        form label { display: flex; flex-direction: column; font-weight: bold; color: #f5f5f5; font-size: 0.9rem; }
-        form input, form textarea { padding: 10px; border-radius: 8px; border: 1px solid #ef4444; margin-top: 5px; font-size: 1rem; background: rgba(255,255,255,0.05); color: #f5f5f5; }
-        form input::placeholder, form textarea::placeholder { color: rgba(245,245,245,0.6); }
-        form button { padding: 12px 25px; background-color: #ef4444; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.3s, transform 0.2s; }
-        form button:hover { background-color: #dc2626; transform: scale(1.05); }
+    .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .price-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+    .price-card h3{margin:0 0 8px 0}
+    .price{font-size:26px;font-weight:800;background:linear-gradient(90deg,var(--primary),var(--primary-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .checklist{list-style:none;padding:0;margin:14px 0 0}
+    .checklist li{display:flex;gap:10px;align-items:flex-start;color:var(--muted)}
+    .check{color:#34D399}
 
-        footer { text-align: center; padding: 40px 20px; background: rgba(20, 20, 20, 0.9); color: #ef4444; font-size: 0.9rem; }
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .service{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+    .service h3{margin:0 0 8px 0}
 
-        @media (max-width: 768px) {
-            nav { padding: 15px 20px; flex-direction: column; align-items: flex-start; gap: 10px; }
-            nav .menu { justify-content: flex-start; flex-wrap: wrap; gap: 10px; }
-            header { flex-direction: column; padding: 60px 20px; }
-            header .intro h1 { font-size: 1.8rem; }
-            header .logo-circle { width: 180px; height: 180px; }
-            section { padding: 40px 20px; }
-            section h2 { font-size: 2rem; }
-        }
+    /* Two-column roles vs real job */
+    .twocol{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:start}
+    .twocol .panel{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+    .twocol h3{margin:0 0 8px 0}
 
-        @media (max-width: 480px) {
-            nav h1 { font-size: 1.2rem; }
-            nav .menu a { font-size: 0.9rem; margin-left: 0; }
-            header .intro h1 { font-size: 1.5rem; }
-            #about p { font-size: 1rem; }
-            #skills div > div { font-size: 1rem; padding:20px; }
-            form { padding: 20px; }
-        }
-    </style>
+    form{display:flex;flex-direction:column;gap:14px;background:rgba(255,255,255,0.04);padding:24px;border-radius:16px;border:1px solid rgba(255,255,255,0.08);box-shadow:var(--shadow);max-width:700px;margin:0 auto}
+    label{display:flex;flex-direction:column;font-weight:600;color:#E6EBFF}
+    input,textarea{padding:12px;border-radius:12px;background:#0F1220;color:#fff;border:1px solid rgba(255,255,255,0.12);outline:none}
+    input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 6px var(--ring)}
+    textarea{resize:vertical}
+    .submit{align-self:flex-start}
+    footer{padding:40px 0;color:#9AA0B5;border-top:1px solid rgba(255,255,255,0.06);margin-top:36px}
+
+    @media (max-width: 860px){
+      .feature{grid-template-columns:1fr}
+      .twocol{grid-template-columns:1fr}
+      .hero h1{font-size:40px}
+    }
+  </style>
 </head>
 <body>
-
-<nav>
-    <h1>ew_i</h1>
-    <div class="menu">
-        <a href="#intro">Úvod</a>
-        <a href="#about">O mně</a>
-        <a href="#skills">Moje dovednosti</a>
-        <a href="#pricing">Ceník</a>
-        <a href="#contact">Kontakt</a>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="name"><span class="a">ew_i</span> <span class="b">Studio</span></div>
+      </div>
+      <nav class="navlinks">
+        <a href="#intro" class="active" data-link>Úvod</a>
+        <a href="#about" data-link>O&nbsp;mně</a>
+        <a href="#portfolio" data-link>Portfolio</a>
+        <a href="#services" data-link>Služby</a>
+        <a href="#pricing" data-link>Ceník</a>
+        <a href="#contact" data-link class="cta">Kontakt</a>
+      </nav>
     </div>
-</nav>
+  </header>
 
-<header id="intro">
-    <div class="intro">
-        <h1>Ahoj, jsem <span>ew_i</span><br>Web programátor & Manažer týmové komunikace</h1>
-        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Kontaktujte mě</button>
-    </div>
-    <div class="logo-circle">
-        <img src="https://i.postimg.cc/t7QLTD6B/logo-1.png" alt="logo">
-    </div>
-</header>
-
-<main>
-    <section id="about">
-        <h2>O mně</h2>
-        <p>Jsem ew_i, web programátor a tvůrce moderních a funkčních webových řešení. Kromě své profesní práce se aktivně věnuji herním serverům, kde působím jako manažer týmové komunikace a staff koordinátor – zajišťuji hladnou spolupráci a efektivní komunikaci mezi helpery a celým týmem. Kombinuji technické dovednosti s organizačními schopnostmi, abych vytvářel nejen krásné weby, ale i dobře fungující herní prostředí.</p>
-    </section>
-
-    <section id="skills">
-        <h2>Moje dovednosti</h2>
-        <div>
-            <div>
-                <h3>Web design & programování</h3>
-                <ul>
-                    <li>Moderní webové stránky s HTML a CSS</li>
-                    <li>Responzivní design pro mobil a desktop</li>
-                    <li>Moderní a stylový design webu dle představ zákazníka</li>
-                </ul>
-            </div>
-            <div>
-                <h3>Herní servery & týmová práce</h3>
-                <ul>
-                    <li>Manažer týmové komunikace a koordinátor staffu</li>
-                    <li>Organizace práce helperů a týmu</li>
-                    <li>Efektivní komunikace a řešení konfliktů</li>
-                    <li>Správa herních portálů a serverů</li>
-                </ul>
-            </div>
+  <main>
+    <section id="intro" class="hero section">
+      <div class="wrap overlay">
+        <span class="pill">Web • Branding • Grafika</span>
+        <h1>Tvořím moderní weby a silné vizuální značky.</h1>
+        <p>Jsem ew_i — webový vývojář a grafik. Spojuji čistý vzhled webu a přehledný obsah a funkční technické řešení. Dávám projektům profesionální vzhled i výkon.</p>
+        <div class="grid" style="margin-top:28px">
+          <div class="card"><h3>Active Minecraft Helper</h3><p class="muted">Aktivní podpora hráčů, řešení problémů a jasná komunikace v reálném čase přímo ve hře.</p></div>
+          <div class="card"><h3>Weby</h3><p class="muted">Rychlé, responzivní a přístupné weby připravené růst s projektem.</p></div>
+          <div class="card"><h3>Grafika bannerů & úprava fotek</h3><p class="muted">Bannery a foto‑edit pro sportovní i nesportovní týmy — ostré vizuály a konzistentní styl.</p></div>
         </div>
+      </div>
     </section>
 
-    <section id="pricing">
-        <h2>Ceník služeb</h2>
-        <ul>
-            <li><strong>Tvorba webů</strong></li>
-            <li>Portfolio web – 400 Kč</li>
-            <li>Web standartní velikosti – 650 Kč</li>
-            <li>Web střední velikosti – 800 Kč</li>
-            <li>Web velké velikosti – od 1000 Kč</li>
-            <li>Custom web – cena dle domluvy</li>
-            <li><em>Ceník slouží pouze pro orientační účely, vše je dle dohody</em></li>
-            <br>
-            <li><strong>Konzultace & týmová komunikace</strong></li>
-            <li>Pomoc s komunikací a vedením týmu – 200–300 Kč (dle rozsahu)</li>
-            <li>Větší projekty a dlouhodobá spolupráce – cena dle domluvy</li>
-            <li><em>Ceník slouží pouze pro orientační účely, vše je dle dohody</em></li>
-        </ul>
+    <section id="about" class="section">
+      <div class="wrap feature">
+        <div class="panel">
+          <h2>O mně</h2>
+          <p class="lead">Jsem ew_i, web programátor a tvůrce moderních, funkčních a estetických řešení. V herních projektech působím jako manažer týmové komunikace — zajišťuji hladký chod, koordinaci týmu a jasnou vizuální linku napříč produkty.</p>
+          <div class="grid" style="margin-top:16px">
+            <div class="card"><strong>Design</strong><br><span class="muted">UI knihovna, barevné systémy, komponenty</span></div>
+            <div class="card"><strong>Vývoj</strong><br><span class="muted">HTML/CSS, JS, optimalizace výkonu</span></div>
+            <div class="card"><strong>Koordinace</strong><br><span class="muted">Procesy, komunikace, kvalita výstupů</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="stack">
+            <div class="card"><h3>Moje dovednosti</h3>
+              <ul class="checklist">
+                <li><span class="check">✔</span> Moderní webové stránky (HTML/CSS)
+                </li>
+                <li><span class="check">✔</span> Responzivní design
+                </li>
+                <li><span class="check">✔</span> Návrh komponent a design systémů
+                </li>
+                <li><span class="check">✔</span> Týmová koordinace a vedení procesů
+                </li>
+              </ul>
+            </div>
+            <div class="card"><h3>Jak pracuji</h3>
+              <ul class="checklist">
+                <li><span class="check">✔</span> Krátký briefing a cíle projektu</li>
+                <li><span class="check">✔</span> Moodboard, barvy, typografie</li>
+                <li><span class="check">✔</span> Návrh, iterace a prototyp</li>
+                <li><span class="check">✔</span> Implementace a ladění detailů</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact">
+    <section id="journey" class="section">
+      <div class="wrap">
+        <h2>Moje cesta</h2>
+        <p class="lead">Vlevo herní role, vpravo reálná práce.</p>
+        <div class="twocol" style="margin-top:16px">
+          <div class="panel">
+            <h3>Herní role</h3>
+            <div class="stack">
+              <div class="card"><strong>od 27. října → teď</strong><br><span class="muted">Zk.helper — ArcPlay</span></div>
+              <div class="card"><strong>od 13. září</strong><br><span class="muted">Rankup Admin</span></div>
+              <div class="card"><strong>od 28. srpna</strong><br><span class="muted">Hl.helper — Quack MC</span></div>
+              <div class="card"><strong>červenec</strong><br><span class="muted">Hl.helper — Emparie</span></div>
+              <div class="card"><strong>12. květen → 27. červen</strong><br><span class="muted">Helper — CZSMP</span></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Reálná práce</h3>
+            <div class="stack">
+              <div class="card"><strong>Developer webu & grafik</strong><br><span class="muted">Klub HBC Šelmy Liberec — tvorba webu, grafických materiálů a bannerů.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section">
+      <div class="wrap">
+        <h2>Portfolio</h2>
+        <p class="lead">Výběr prací — Poslední práce na kterých jsem pracoval.</p>
+        <div class="portfolio-grid" style="margin-top:14px">
+          <div class="shot">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'><rect width='100%25' height='100%25' fill='%239CA3AF'/></svg>" alt="Ukázka webu 1">
+            <div class="caption">Připravujeme</div>
+          </div>
+          <div class="shot">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'><rect width='100%25' height='100%25' fill='%239CA3AF'/></svg>" alt="Ukázka webu 2">
+            <div class="caption">Připravujeme</div>
+          </div>
+          <div class="shot">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'><rect width='100%25' height='100%25' fill='%239CA3AF'/></svg>" alt="Ukázka grafiky 1">
+            <div class="caption">Připravujeme</div>
+          </div>
+          <div class="shot">
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'><rect width='100%25' height='100%25' fill='%239CA3AF'/></svg>" alt="Ukázka banneru">
+            <div class="caption">Připravujeme</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="wrap">
+        <h2>Grafické služby</h2>
+        <p class="lead">Kompletní vizuální podpora — pro bannery a celý web.</p>
+        <div class="services" style="margin-top:16px">
+          <div class="service">
+            <h3>Logo & identita</h3>
+            <p class="muted">Návrh banneru, barvy, typografie a základní brand manuál.</p>
+          </div>
+          <div class="service">
+            <h3>Sociální grafika</h3>
+            <p class="muted">Bannery, příspěvky, story šablony a reklamní sety.</p>
+          </div>
+          <div class="service">
+            <h3>UI set pro web</h3>
+            <p class="muted">Komponenty, tlačítka, karty, formuláře a interakce.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="wrap">
+        <h2>Ceník</h2>
+        <p class="lead">Orientační ceny — přesná nabídka dle rozsahu a zadání.</p>
+        <div class="pricing" style="margin-top:16px">
+          <div class="price-card">
+            <h3>Portfolio web</h3>
+            <div class="price">250 Kč</div>
+            <ul class="checklist">
+              <li><span class="check">✔</span> 1 stránka, responzivní</li>
+              <li><span class="check">✔</span> Základní SEO a výkon</li>
+              <li><span class="check">✔</span> Nasazení na hosting (volitelně)</li>
+            </ul>
+          </div>
+          <div class="price-card">
+            <h3>Web 1–4 stránky</h3>
+            <div class="price">350 Kč</div>
+            <ul class="checklist">
+              <li><span class="check">✔</span> Vlastní design, navigace</li>
+              <li><span class="check">✔</span> Komponenty a UI prvky</li>
+              <li><span class="check">✔</span> Úpravy dle feedbacku</li>
+            </ul>
+          </div>
+          <div class="price-card">
+            <h3>Web 5–8 stránek</h3>
+            <div class="price">500 Kč</div>
+            <ul class="checklist">
+              <li><span class="check">✔</span> Rozšířená struktura</li>
+              <li><span class="check">✔</span> Animace a interakce</li>
+              <li><span class="check">✔</span> Konzultace a QA</li>
+            </ul>
+          </div>
+          <div class="price-card">
+            <h3>Custom řešení</h3>
+            <div class="price">dle domluvy</div>
+            <ul class="checklist">
+              <li><span class="check">✔</span> Návrh na míru</li>
+              <li><span class="check">✔</span> Brand & obsah</li>
+              <li><span class="check">✔</span> Dlouhodobá spolupráce</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="contact" class="section">
+      <div class="wrap">
         <h2>Kontakt</h2>
-        <form action="https://formspree.io/f/xqalnorl" method="POST">
-            <label>
-                Váš email:
-                <input type="email" name="email" required placeholder="example@email.com">
-            </label>
-            <label>
-                Vaše zpráva:
-                <textarea name="message" rows="5" required placeholder="Vaše zpráva..."></textarea>
-            </label>
-            <button type="submit">Odeslat</button>
+        <p class="lead">Napiš stručně cíle projektu a preferovaný termín. Ozvu se zpět s návrhem.</p>
+        <form action="https://formspree.io/f/xqalnorl" method="POST" style="margin-top:12px">
+          <label>
+            Tvůj e‑mail
+            <input type="email" name="email" required placeholder="name@email.com">
+          </label>
+          <label>
+            Zpráva
+            <textarea name="message" rows="5" required placeholder="Co potřebuješ navrhnout/vytvořit?"></textarea>
+          </label>
+          <button class="cta submit" type="submit">Odeslat</button>
         </form>
+      </div>
     </section>
-</main>
+  </main>
 
-<footer>
-    &copy; 2025 ew_i
-</footer>
+  <footer>
+    <div class="wrap row" style="justify-content:space-between">
+      <span>© 2025 ew_i</span>
+      <span class="row" style="gap:12px"><a href="#intro" class="muted">Úvod</a><a href="#portfolio" class="muted">Portfolio</a><a href="#contact" class="muted">Kontakt</a></span>
+    </div>
+  </footer>
 
+  
 </body>
 </html>
